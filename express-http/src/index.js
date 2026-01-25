@@ -3,7 +3,7 @@ const bodyparser = require('body-parser');
 
 app.use(bodyparser.json()); 
 
-const clientes = [
+let clientes = [
     {id:1,nome:"Pedro",telefone:"71 1214-3321"}, 
     {id:2,nome:"Katia",telefone:"71 1334-4133"}, 
     {id:3,nome:"Paulo",telefone:"71 1234-1234"}, 
@@ -27,6 +27,26 @@ app.post("/users",(req,res)=>{
     const cliente = req.body 
     clientes.push(req.body)
     res.json(cliente) 
+
+})
+
+// Atualizar dados
+app.put("/users/:id",(req,res)=>{
+
+    const id = req.params.id; 
+    const nome = req.body.nome; 
+
+    let client = clientes.filter(value=>value.id == id); 
+
+    client[0].nome = nome  
+
+    res.json(client[0]);  
+})
+
+app.delete("/users/:id",(req,res)=>{
+    const id = req.params.id; 
+    clientes=clientes.filter(value=>value.id != id);  
+    res.json(clientes);  
 
 })
 
