@@ -1,4 +1,7 @@
 const app = require("express") (); 
+const bodyparser = require('body-parser'); 
+
+app.use(bodyparser.json()); 
 
 const clientes = [
     {id:1,nome:"Pedro",telefone:"71 1214-3321"}, 
@@ -21,7 +24,10 @@ res.json(user)
 
 // Inserção de Dados
 app.post("/users",(req,res)=>{
-    console.log(req.body) 
+    const cliente = req.body 
+    clientes.push(req.body)
+    res.json(cliente) 
+
 })
 
 app.listen(3000); 
