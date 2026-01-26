@@ -13,6 +13,7 @@ let clientes = [
 function log(req,res,next){
 const {url,method} = req 
 console.log(`${method} - ${url} at ${new Date()}`)
+return next() 
 }
 app.use(log)
 
@@ -28,7 +29,7 @@ res.json(user)
 })
 
 // Inserção de Dados
-app.post("/users",(req,res)=>{
+app.post("/users", log,(req,res)=>{
     const cliente = req.body 
     clientes.push(req.body)
     res.json(cliente) 
@@ -36,7 +37,7 @@ app.post("/users",(req,res)=>{
 })
 
 // Atualizar dados
-app.put("/users/:id",(req,res)=>{
+app.put("/users/:id",log,(req,res)=>{
 
     const id = req.params.id; 
     const nome = req.body.nome; 
