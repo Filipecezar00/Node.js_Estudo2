@@ -10,6 +10,11 @@ let clientes = [
     {id:4,nome:"João",telefone:"71 3211-4444"} 
 ];
 
+function log(req,res,next){
+const {url,method} = req 
+console.log(`${method} - ${url} at ${new Date()}`)
+}
+app.use(log)
 
 // Retorna todos os Clientes
 app.get("/users",(req,res)=>{
