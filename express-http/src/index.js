@@ -64,7 +64,7 @@ app.delete("/users/:id",(req,res)=>{
         res.status(400).send() 
     }else{
         clientes.splice(Index,1) 
-        res.status(204)
+        res.status(204).send()
     }
 })
 
