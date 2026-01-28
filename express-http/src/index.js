@@ -22,6 +22,7 @@ app.get("/users",(req,res)=>{
 return res.json(clientes).status(200) 
 }); 
 
+
 //Buscar um unico Recurso 
 app.get("/users/:id",(req,res)=>{
 const {id} = req.params; 
