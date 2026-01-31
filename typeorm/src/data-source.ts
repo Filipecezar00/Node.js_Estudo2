@@ -1,3 +1,4 @@
+import "reflect-metadata"; 
 import {DataSource} from "typeorm" 
 
 export const AppDataSource = new DataSource({
@@ -5,8 +6,8 @@ export const AppDataSource = new DataSource({
     host:"localhost", 
     port:5433,
     username:"postgres", 
-    password:"test",
-    database:"test",
+    password:"docker",
+    database:"oni",
     synchronize:true,
     entities:["src/entities/*.ts"], 
 })
